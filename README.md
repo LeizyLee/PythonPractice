@@ -1,5 +1,5 @@
-### PythonPractice
-#Study Python
+### 공부를 ㅎㅏㄴ다
+#대학교 공부를
 
 #20180-10-03
 - Dijkstra 알고리즘 완성
