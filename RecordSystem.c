@@ -15,7 +15,7 @@ void create_record(int fd, struct student record, int argc, char *argv[]){
 	}
 	printf("%-9s %-8s %-4s\n", "학번", "이름", "점수");
 	while (true){
-		scanf("%d ", &id);
+		scanf("%d", &id);
     if(id == -1){
 			break;
 		}
@@ -25,6 +25,7 @@ void create_record(int fd, struct student record, int argc, char *argv[]){
 			record.de = false;
 	    lseek(fd, (record.id - START_ID) * sizeof(record), SEEK_SET);
 			write(fd, (char *) &record, sizeof(record) );
+			fflush(stdin);
 		}
 	}
 	close(fd);
@@ -76,7 +77,7 @@ void edit_record(int fd, struct student record, char *argv[]){
 }
 
 void del_record(int fd, struct student record, char *argv[]){
-	int id;
+int id;
 	if ((fd = open(argv[2], O_RDWR)) == -1){
 		perror(argv[1]);
 		exit(2);
@@ -95,7 +96,7 @@ void del_record(int fd, struct student record, char *argv[]){
 }
 
 int main(int argc, char *argv[]){
-	int fd;
+int fd;
 	char c;
 	struct student record;
 
