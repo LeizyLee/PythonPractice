@@ -47,9 +47,8 @@ void insert_data(int fd, struct student record, char *argv[]){
 			record.id = id;
 			scanf("%s %d", record.name, &record.score);
 			record.de = false;
-	    lseek(fd, (record.id - START_ID) * sizeof(record), SEEK_SET);
+	    lseek(fd, (long)(record.id - START_ID) * sizeof(record), SEEK_SET);
 			write(fd, (char *) &record, sizeof(record) );
-			fflush(stdin);
 		}
 	}
 	close(fd);
