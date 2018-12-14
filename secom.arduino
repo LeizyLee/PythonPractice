@@ -1,0 +1,29 @@
+#define TOUCH 3
+#define LED1 7
+#define Buzz 6
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(TOUCH, INPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(Buzz, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int value2 = digitalRead(TOUCH);
+  int sun = analogRead(A0);
+  sun = map(sun, 0, 680, 0, 24);
+
+  Serial.println(sun);
+  if(sun > 20){
+    if (value2 == 1){
+      digitalWrite(LED1, HIGH);
+      tone(Buzz, 494);
+      delay(5000);
+      digitalWrite(LED1, LOW);
+      noTone(Buzz);
+    }
+  }  
+}
